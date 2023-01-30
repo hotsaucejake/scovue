@@ -5,7 +5,7 @@ import WelcomeLayout from "@/components/layouts/WelcomeLayout.vue";
 <template>
   <WelcomeLayout>
     <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
+    <p class="m-20 fill-fuchsia-400">slot</p>
     <p class="m-20">slot</p>
     <p class="m-20">slot</p>
     <p class="m-20">slot</p>
