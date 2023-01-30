@@ -7,7 +7,7 @@ const toggleDark = useToggle(isDark);
 
 <template>
   <!-- Not toggled switch -->
-  <div class="w-full h-full flex flex-col justify-center items-center">
+  <div class="flex flex-col justify-center items-center h-full w-full">
     <div class="flex justify-center items-center">
       <span class="">
         <svg
