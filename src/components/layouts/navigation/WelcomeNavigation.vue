@@ -1,10 +1,38 @@
 <script setup lang="ts">
 import JotSauceLogo from "@/components/JotSauceLogo.vue";
 import ThemeToggle from "@/components/ThemeToggle.vue";
+
+const props = defineProps({
+  isSticky: {
+    type: Boolean,
+    default: false,
+  },
+  isTransparent: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 <template>
   <nav
-    class="border-b-4 opacity-90 border-b-blue-400 shadow-md shadow-slate-400 dark:shadow-slate-600 bg-gradient-to-br from-slate-100 to-blue-100 dark:from-slate-900 dark:to-slate-700 text-slate-800 dark:text-slate-100 sticky top-0 z-40"
+    class="text-slate-800 dark:text-slate-100"
+    :class="{
+      'bg-transparent': props.isTransparent,
+      'bg-gradient-to-br': !props.isTransparent,
+      'from-slate-200': !props.isTransparent,
+      'to-slate-300': !props.isTransparent,
+      'dark:from-slate-800': !props.isTransparent,
+      'dark:to-slate-700': !props.isTransparent,
+      'border-b-4': !props.isTransparent,
+      'border-b-slate-800': !props.isTransparent,
+      'dark:border-b-slate-200': !props.isTransparent,
+      'shadow-md': !props.isTransparent,
+      'shadow-slate-400': !props.isTransparent,
+      'dark:shadow-slate-600': !props.isTransparent,
+      'sticky ': props.isSticky,
+      'top-0': props.isSticky,
+      'z-40': props.isSticky,
+    }"
   >
     <div class="mx-auto px-4">
       <div class="flex justify-between">
@@ -29,7 +57,7 @@ import ThemeToggle from "@/components/ThemeToggle.vue";
           </RouterLink>
           <RouterLink :to="{ name: 'login' }">
             <span
-              class="hidden md:inline-flex mx-3 px-6 py-3 font-semibold text-center justify-center text-slate-100 transition duration-300 rounded-full hover:from-blue-700 hover:to-fuchsia-700 ease bg-gradient-to-br from-blue-600 to-fuchsia-600 w-36"
+              class="hidden md:inline-flex mx-3 px-6 py-3 font-semibold text-center justify-center text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-blue-400 to-fuchsia-400 w-36"
             >
               Login
             </span>

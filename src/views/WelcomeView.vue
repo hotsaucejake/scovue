@@ -1,43 +1,36 @@
 <script setup lang="ts">
-import JotSauceLogo from "@/components/JotSauceLogo.vue";
+import WelcomeNavigation from "@/components/layouts/navigation/WelcomeNavigation.vue";
 import WelcomeLayout from "@/components/layouts/WelcomeLayout.vue";
 </script>
 
 <template>
   <WelcomeLayout>
-    
-    <p class="m-20">slot</p>
-    <JotSauceLogo :size="'300'" />
-    <p class="m-20 fill-fuchsia-400">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
-    <p class="m-20">slot</p>
+    <section>
+      blah blah blah
+      <!-- <div
+        class="h-full bg-slate-100 opacity-50 dark:bg-slate-800 dark:opacity-50"
+      ></div> -->
+    </section>
+    <WelcomeNavigation :is-sticky="true" :is-transparent="false" />
+    <section>
+      blah blah blah
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <p class="m-36">blah blah blah</p>
+      <!-- <div
+        class="h-full bg-slate-100 opacity-50 dark:bg-slate-800 dark:opacity-50"
+      ></div> -->
+    </section>
   </WelcomeLayout>
 </template>

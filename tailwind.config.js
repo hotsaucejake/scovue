@@ -8,6 +8,9 @@ module.exports = {
       backgroundImage: {
         "auth-light": "url('/images/backgrounds/authlight.jpg')",
         "auth-dark": "url('/images/backgrounds/authdark.jpg')",
+        "wood-section": "url('/images/backgrounds/wood.jpg')",
+        "light-desk": "url('/images/backgrounds/lightdesk.jpg')",
+        "dark-desk": "url('/images/backgrounds/darkdesk.jpg')",
       },
     },
   },
