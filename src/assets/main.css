@@ -1,3 +1,145 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Arvo Bold";
+        font-weight: 700;
+        src: local("Arvo Bold"), url("/fonts/Arvo/Arvo-Bold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Arvo Bold Italic";
+        font-weight: 700;
+        font-style: italic;
+        src: local("Arvo Bold Italic"), url("/fonts/Arvo/Arvo-BoldItalic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Arvo Italic";
+        font-weight: 400;
+        font-style: italic;
+        src: local("Arvo Italic"), url("/fonts/Arvo/Arvo-Italic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Arvo Regular";
+        font-weight: 400;
+        src: local("Arvo Regular"), url("/fonts/Arvo/Arvo-Regular.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Dosis Bold";
+        font-weight: 700;
+        src: local("Dosis Bold"), url("/fonts/Dosis/Dosis-Bold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Dosis Extra Bold";
+        font-weight: 800;
+        src: local("Dosis Extra Bold"), url("/fonts/Dosis/Dosis-ExtraBold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Dosis Extra Light";
+        font-weight: 200;
+        src: local("Dosis Extra Light"), url("/fonts/Dosis/Dosis-ExtraLight.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Dosis Light";
+        font-weight: 300;
+        src: local("Dosis Light"), url("/fonts/Dosis/Dosis-Light.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Dosis Medium";
+        font-weight: 500;
+        src: local("Dosis Medium"), url("/fonts/Dosis/Dosis-Medium.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Dosis Regular";
+        font-weight: 400;
+        src: local("Dosis Regular"), url("/fonts/Dosis/Dosis-Regular.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Dosis Semi Bold";
+        font-weight: 600;
+        src: local("Dosis Semi Bold"), url("/fonts/Dosis/Dosis-SemiBold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Bold";
+        font-weight: 700;
+        src: local("Roboto Mono Bold"), url("/fonts/Roboto_Mono/RobotoMono-Bold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Bold Italic";
+        font-weight: 700;
+        font-style: italic;
+        src: local("Roboto Mono Bold Italic"), url("/fonts/Roboto_Mono/RobotoMono-BoldItalic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Extra Light";
+        font-weight: 200;
+        src: local("Roboto Mono Extra Light"), url("/fonts/Roboto_Mono/RobotoMono-ExtraLight.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Extra Light Italic";
+        font-weight: 200;
+        font-style: italic;
+        src: local("Roboto Mono Extra Light Italic"), url("/fonts/Roboto_Mono/RobotoMono-ExtraLightItalic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Italic";
+        font-weight: 400;
+        font-style: italic;
+        src: local("Roboto Mono Italic"), url("/fonts/Roboto_Mono/RobotoMono-Italic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Light";
+        font-weight: 300;
+        src: local("Roboto Mono Light"), url("/fonts/Roboto_Mono/RobotoMono-Light.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Light Italic";
+        font-weight: 300;
+        font-style: italic;
+        src: local("Roboto Mono Light Italic"), url("/fonts/Roboto_Mono/RobotoMono-LightItalic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Medium";
+        font-weight: 500;
+        src: local("Roboto Mono Medium"), url("/fonts/Roboto_Mono/RobotoMono-Medium.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Medium Italic";
+        font-weight: 500;
+        font-style: italic;
+        src: local("Roboto Mono Medium Italic"), url("/fonts/Roboto_Mono/RobotoMono-MediumItalic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Regular";
+        font-weight: 400;
+        src: local("Roboto Mono Regular"), url("/fonts/Roboto_Mono/RobotoMono-Regular.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Semi Bold";
+        font-weight: 600;
+        src: local("Roboto Mono Semi Bold"), url("/fonts/Roboto_Mono/RobotoMono-SemiBold.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Semi Bold Italic";
+        font-weight: 600;
+        font-style: italic;
+        src: local("Roboto Mono Semi Bold Italic"), url("/fonts/Roboto_Mono/RobotoMono-SemiBoldItalic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Thin";
+        font-weight: 100;
+        src: local("Roboto Mono Thin"), url("/fonts/Roboto_Mono/RobotoMono-Thin.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Roboto Mono Italic";
+        font-weight: 100;
+        font-style: italic;
+        src: local("Roboto Mono Italic"), url("/fonts/Roboto_Mono/RobotoMono-ThinItalic.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Satisfy";
+        font-weight: 400;
+        src: local("Satisfy"), url("/fonts/Satisfy/Satisfy-Regular.ttf") format("truetype");
+    }
+}
