@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDark, useToggle } from "@vueuse/core";
+import { useDark, useToggle } from '@vueuse/core';
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -10,12 +10,7 @@ const toggleDark = useToggle(isDark);
   <div class="flex flex-col justify-center items-center h-full w-full">
     <div class="flex justify-center items-center">
       <span class="">
-        <svg
-          class="h-6 w-6 text-slate-800 dark:text-slate-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+        <svg class="h-6 w-6 text-slate-800 dark:text-slate-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -25,22 +20,12 @@ const toggleDark = useToggle(isDark);
         </svg>
       </span>
       <!-- Switch Container -->
-      <div
-        class="w-14 h-7 flex items-center bg-slate-800 dark:bg-slate-100 rounded-full mx-3 px-1"
-        @click="toggleDark()"
-      >
+      <div class="w-14 h-7 flex items-center bg-slate-800 dark:bg-slate-100 rounded-full mx-3 px-1" @click="toggleDark()">
         <!-- Switch -->
-        <div
-          class="bg-slate-100 dark:bg-slate-800 w-5 h-5 rounded-full shadow-md transform dark:translate-x-7"
-        ></div>
+        <div class="bg-slate-100 dark:bg-slate-800 w-5 h-5 rounded-full shadow-md transform dark:translate-x-7"></div>
       </div>
       <span class="">
-        <svg
-          class="h-6 w-6 text-slate-800 dark:text-slate-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+        <svg class="h-6 w-6 text-slate-800 dark:text-slate-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"

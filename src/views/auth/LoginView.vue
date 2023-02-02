@@ -1,28 +1,18 @@
 <script setup lang="ts"></script>
 
 <template>
-  <section
-    class="w-full h-screen bg-center bg-cover bg-auth-light flex justify-center items-center flex-col"
-  >
+  <section class="w-full h-screen bg-center bg-cover bg-auth-light flex justify-center items-center flex-col">
     <!-- component -->
     <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
       <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
-        ></div>
-        <div
-          class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20"
-        >
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div class="max-w-md mx-auto">
             <div>
-              <h1 class="text-2xl font-semibold">
-                Login Form with Floating Labels
-              </h1>
+              <h1 class="text-2xl font-semibold">Login Form with Floating Labels</h1>
             </div>
             <div class="divide-y divide-gray-200">
-              <div
-                class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
-              >
+              <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                 <div class="relative">
                   <input
                     autocomplete="off"
@@ -54,9 +44,7 @@
                   >
                 </div>
                 <div class="relative">
-                  <button class="bg-blue-500 text-white rounded-md px-2 py-1">
-                    Submit
-                  </button>
+                  <button class="bg-blue-500 text-white rounded-md px-2 py-1">Submit</button>
                 </div>
               </div>
             </div>

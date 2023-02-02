@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import JotSauceLogo from "@/components/JotSauceLogo.vue";
-import ThemeToggle from "@/components/ThemeToggle.vue";
+import JotSauceLogo from '@/components/JotSauceLogo.vue';
+import ThemeToggle from '@/components/ThemeToggle.vue';
 
 const props = defineProps({
   isSticky: {

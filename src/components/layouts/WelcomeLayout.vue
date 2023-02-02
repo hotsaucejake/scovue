@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WelcomeNavigation from "./navigation/WelcomeNavigation.vue";
+import WelcomeNavigation from './navigation/WelcomeNavigation.vue';
 </script>
 <template>
   <section>
@@ -8,14 +8,13 @@ import WelcomeNavigation from "./navigation/WelcomeNavigation.vue";
     >
       <WelcomeNavigation :is-sticky="false" :is-transparent="true" />
       <div class="flex justify-center h-full">
-        <h2 class="font-dosis-bold text-7xl md:text-8xl lg:text-9xl my-auto">
-          <span class="font-arvo-bold text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 to-blue-400">
-            <nobr>Finally,</nobr></span>
-            <br />
-            <nobr>a digital
-          <span class="font-satisfy-regular font-black text-blue-400">journal</span></nobr>
+        <h2 class="font-dosis-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl my-auto">
+          <span class="font-arvo-bold text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 to-blue-400"> <nobr>Finally,</nobr></span>
           <br />
-          <nobr>for <span class="text-fuchsia-400">everything.</span></nobr></h2>
+          <nobr>a digital <span class="font-satisfy-regular font-black text-blue-400">journal</span></nobr>
+          <br />
+          <nobr>for <span class="text-fuchsia-400">everything.</span></nobr>
+        </h2>
       </div>
     </div>
     <slot></slot>

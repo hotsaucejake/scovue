@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import JotSauceLogo from "./JotSauceLogo.vue";
+import JotSauceLogo from './JotSauceLogo.vue';
 </script>
 
 <template>

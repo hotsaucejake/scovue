@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IndexLayout from "@/components/layouts/IndexLayout.vue";
+import IndexLayout from '@/components/layouts/IndexLayout.vue';
 </script>
 
 <template>

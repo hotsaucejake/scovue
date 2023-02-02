@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LoadingScreen from "./components/LoadingScreen.vue";
+import LoadingScreen from './components/LoadingScreen.vue';
 </script>
 
 <template>
