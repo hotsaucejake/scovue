@@ -5,7 +5,7 @@ import WelcomeLayout from '@/components/layouts/WelcomeLayout.vue';
 
 <template>
   <WelcomeLayout>
-    <section>
+    <section class="">
       blah blah blah
       <!-- <div
         class="h-full bg-slate-100 opacity-50 dark:bg-slate-800 dark:opacity-50"
