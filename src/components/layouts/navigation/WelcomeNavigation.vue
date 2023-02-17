@@ -15,20 +15,20 @@ const props = defineProps({
 </script>
 <template>
   <nav
-    class="text-slate-800 dark:text-slate-100"
+    class="text-slate-800 dark:text-slate-100 font-dosis-bold font-bold"
     :class="{
       'bg-transparent': props.isTransparent,
       'bg-gradient-to-br': !props.isTransparent,
-      'from-slate-200': !props.isTransparent,
-      'to-slate-300': !props.isTransparent,
+      'from-slate-100': !props.isTransparent,
+      'to-slate-200': !props.isTransparent,
       'dark:from-slate-800': !props.isTransparent,
       'dark:to-slate-700': !props.isTransparent,
       'border-b-4': !props.isTransparent,
-      'border-b-slate-800': !props.isTransparent,
-      'dark:border-b-slate-200': !props.isTransparent,
+      'border-b-slate-100': !props.isTransparent,
+      'dark:border-b-slate-800': !props.isTransparent,
       'shadow-md': !props.isTransparent,
-      'shadow-slate-400': !props.isTransparent,
-      'dark:shadow-slate-600': !props.isTransparent,
+      'shadow-slate-500': !props.isTransparent,
+      'dark:shadow-slate-500': !props.isTransparent,
       'sticky ': props.isSticky,
       'top-0': props.isSticky,
       'z-40': props.isSticky,
@@ -50,14 +50,14 @@ const props = defineProps({
           <ThemeToggle />
           <RouterLink :to="{ name: 'register' }">
             <span
-              class="hidden md:inline-flex border-l-2 border-l-slate-300 dark:border-l-slate-600 mr-3 ml-3 px-6 py-3 font-semibold text-center justify-center text-slate-800 dark:text-slate-100 hover:border-b-fuchsia-400 hover:border-b-4"
+              class="hidden md:inline-flex border-l-2 border-l-slate-300 dark:border-l-slate-600 mr-3 ml-3 px-6 py-3 text-lg text-center justify-center text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 to-blue-400 hover:border-b-fuchsia-400 hover:border-b-4"
             >
               Register
             </span>
           </RouterLink>
           <RouterLink :to="{ name: 'login' }">
             <span
-              class="hidden md:inline-flex mx-3 px-6 py-3 font-semibold text-center justify-center text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-blue-400 to-fuchsia-400 w-36"
+              class="hidden md:inline-flex mx-3 px-6 py-3 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-blue-400 to-fuchsia-400 w-36"
             >
               Login
             </span>
