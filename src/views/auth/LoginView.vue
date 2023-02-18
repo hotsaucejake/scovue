@@ -5,10 +5,12 @@
     <!-- component -->
     <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12 w-full">
       <div class="relative py-3 sm:max-w-xl md:max-w-2xl sm:mx-auto">
-        <div class="absolute inset-0 bg-transparent border-dashed border-4 transform skew-y-0 -rotate-6 rounded-3xl"></div>
+        <div class="absolute inset-0 bg-transparent border-dashed border-4 border-slate-100 transform skew-y-0 -rotate-12 rounded-3xl"></div>
         <!-- <div class="absolute inset-0 bg-gradient-to-br from-blue-300 to-blue-500 shadow-lg transform skew-y-0 -rotate-6 rounded-3xl"></div> -->
         <!-- <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-400 to-blue-400 shadow-lg transform skew-y-0 -rotate-3 rounded-3xl"></div> -->
-        <div class="relative px-4 py-10 bg-gradient-to-br from-slate-100 to bg-slate-200 shadow-lg rounded-3xl p-20 border-4 border-slate-600">
+        <div
+          class="relative px-4 py-10 bg-gradient-to-r from-fuchsia-600 via-blue-600 to-blue-400 shadow-lg rounded-3xl p-20 border-4 border-slate-600 transform skew-y-0 -rotate-6"
+        >
           <div class="max-w-md mx-auto">
             <div>
               <h1 class="text-2xl font-semibold">Login</h1>
@@ -21,12 +23,12 @@
                     id="email"
                     name="email"
                     type="text"
-                    class="peer placeholder-transparent h-14 w-full border-b-2 border-gray-300 text-gray-900 bg-gradient-to-br from-slate-50 to-slate-100 rounded-t-xl focus:outline-none focus:borer-rose-600 px-2"
+                    class="peer placeholder-transparent h-14 w-full border-b-2 border-slate-800 text-gray-900 bg-gradient-to-br from-slate-50 to-slate-100 rounded-t-xl focus:outline-none focus:borer-rose-600 px-2"
                     placeholder="Email address"
                   />
                   <label
                     for="email"
-                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm px-2"
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm px-2 rounded-t-xl"
                     >Email Address</label
                   >
                 </div>
@@ -36,12 +38,12 @@
                     id="password"
                     name="password"
                     type="password"
-                    class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                    class="peer placeholder-transparent h-14 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="Password"
                   />
                   <label
                     for="password"
-                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
+                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm px-2"
                     >Password</label
                   >
                 </div>
@@ -52,7 +54,7 @@
                     Login
                   </button>
                 </div>
-                <div class="flex flex-row m-auto bg-gradient-to-r from-purple-700 via-purple-800 to-purple-900 p-6 gap-8 rounded-lg border-2 border-purple-500">
+                <div class="flex flex-row m-auto bg-gradient-to-r from-fuchsia-600 via-blue-600 to-blue-400 p-6 gap-8 rounded-lg border-2 border-slate-800">
                   <div class="my-auto">
                     <div class="text-lg text-purple-300">Downloads</div>
                     <div class="text-4xl text-purple-100">622k</div>
