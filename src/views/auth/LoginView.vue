@@ -5,67 +5,56 @@
     <!-- component -->
     <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12 w-full">
       <div class="relative py-3 sm:max-w-xl md:max-w-2xl sm:mx-auto">
-        <div class="absolute inset-0 bg-transparent border-dashed border-4 border-slate-100 transform skew-y-0 -rotate-12 rounded-3xl"></div>
+        <div class="absolute inset-0 bg-transparent border-dashed border-2 border-slate-100 transform skew-y-0 -rotate-12 rounded-3xl"></div>
         <!-- <div class="absolute inset-0 bg-gradient-to-br from-blue-300 to-blue-500 shadow-lg transform skew-y-0 -rotate-6 rounded-3xl"></div> -->
         <!-- <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-400 to-blue-400 shadow-lg transform skew-y-0 -rotate-3 rounded-3xl"></div> -->
         <div
-          class="relative px-4 py-10 bg-gradient-to-r from-fuchsia-600 via-blue-600 to-blue-400 shadow-lg rounded-3xl p-20 border-4 border-slate-600 transform skew-y-0 -rotate-6"
+          class="relative px-4 py-10 bg-gradient-to-r from-fuchsia-400 to-blue-400 shadow-lg rounded-3xl p-20 border-2 border-slate-200 transform skew-y-0 -rotate-6"
         >
           <div class="max-w-md mx-auto">
             <div>
-              <h1 class="text-2xl font-semibold">Login</h1>
+              <h1 class="text-2xl font-bold text-slate-100 text-center">Login</h1>
             </div>
             <div class="divide-y divide-gray-200">
               <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                <div class="relative">
+                <div class="relative my-6">
                   <input
                     autocomplete="off"
                     id="email"
                     name="email"
                     type="text"
-                    class="peer placeholder-transparent h-14 w-full border-b-2 border-slate-800 text-gray-900 bg-gradient-to-br from-slate-50 to-slate-100 rounded-t-xl focus:outline-none focus:borer-rose-600 px-2"
+                    class="peer placeholder-transparent h-14 w-full border-b-2 border-slate-100 text-gray-900 bg-gradient-to-br from-slate-100 to-slate-300 rounded-t-xl focus:outline-none focus:borer-rose-600 px-2"
                     placeholder="Email address"
                   />
                   <label
                     for="email"
-                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-2.5 peer-focus:text-gray-600 peer-focus:text-sm px-2 rounded-t-xl"
+                    class="absolute left-0 -top-5 text-slate-800 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-5 transition-all peer-focus:-top-5 peer-focus:text-slate-100 peer-focus:text-sm px-2 rounded-t-xl font-bold"
                     >Email Address</label
                   >
                 </div>
-                <div class="relative">
+                <div class="relative my-6">
                   <input
                     autocomplete="off"
                     id="password"
                     name="password"
                     type="password"
-                    class="peer placeholder-transparent h-14 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                    class="peer placeholder-transparent h-14 w-full border-b-2 border-slate-100 text-gray-900 bg-gradient-to-br from-slate-100 to-slate-300 rounded-t-xl focus:outline-none focus:borer-rose-600 px-2"
                     placeholder="Password"
                   />
                   <label
                     for="password"
-                    class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm px-2"
+                    class="absolute left-0 -top-2.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-3.5 transition-all peer-focus:-top-5 peer-focus:text-slate-100 peer-focus:text-sm px-2 rounded-t-xl font-bold"
                     >Password</label
                   >
                 </div>
-                <div class="relative flex justify-center">
-                  <button
-                    class="px-6 py-3 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-blue-400 to-fuchsia-400 w-36"
-                  >
-                    Login
-                  </button>
-                </div>
-                <div class="flex flex-row m-auto bg-gradient-to-r from-fuchsia-600 via-blue-600 to-blue-400 p-6 gap-8 rounded-lg border-2 border-slate-800">
-                  <div class="my-auto">
-                    <div class="text-lg text-purple-300">Downloads</div>
-                    <div class="text-4xl text-purple-100">622k</div>
-                  </div>
-                  <div class="text-purple-300 my-auto bg-gradient-to-l from-purple-700 via-purple-800 to-purple-900 rounded-full p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z" />
-                    </svg>
-                  </div>
-                </div>
               </div>
+            </div>
+            <div class="relative flex justify-center my-6">
+              <button
+                class="px-6 py-3 hover:border-slate-300 border-slate-100 border-2 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-700 hover:to-fuchsia-700 ease bg-gradient-to-br from-blue-600 to-fuchsia-600 w-36"
+              >
+                Login
+              </button>
             </div>
           </div>
         </div>
