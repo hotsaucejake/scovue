@@ -7,6 +7,36 @@ import { onMounted } from 'vue';
 const userSession = useUserSession();
 userSession.clearAuthentication(); // clear authentication if they ever hit this page
 
+// import { object, string, number } from 'zod';
+
+// const addressSchema = object({
+//   street: string().min(3).max(50).required(),
+//   number: number().required(),
+//   city: string().min(3).max(50).required(),
+//   state: string().min(2).max(2).required(),
+//   zip: string().pattern(/^\d{5}-\d{3}$/).required()
+// });
+
+// const address = ref({
+//   street: '',
+//   number: 0,
+//   city: '',
+//   state: '',
+//   zip: ''
+// })
+
+// const submitForm = async () => {
+//   try {
+//     const valid = addressSchema.validate(address.value)
+
+//     if (!valid) return
+
+//     // Send data to server
+//   } catch (err) {
+//     console.log(err.errors)
+//   }
+// }
+
 onMounted(async () => {
   const resp = await login({ email_or_username: 'hotsaucejake', password: 'password' });
   console.log(resp);
