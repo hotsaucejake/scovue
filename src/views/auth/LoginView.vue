@@ -1,60 +1,48 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ThemeToggle from '@/components/ThemeToggle.vue';
+import { login } from '@/services/jotsauce/auth.service';
+import { useUserSession } from '@/stores/userSession';
+import { onMounted } from 'vue';
+
+const userSession = useUserSession();
+userSession.clearAuthentication(); // clear authentication if they ever hit this page
+
+onMounted(async () => {
+  const resp = await login({ email_or_username: 'hotsaucejake', password: 'password' });
+  console.log(resp);
+});
+</script>
 
 <template>
-  <section class="w-full h-screen bg-center bg-cover bg-auth-light flex justify-center items-center flex-col">
-    <!-- component -->
-    <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12 w-full">
-      <div class="relative py-3 sm:max-w-xl md:max-w-2xl sm:mx-auto">
-        <div class="absolute inset-0 bg-transparent border-dashed border-2 border-slate-100 transform skew-y-0 -rotate-12 rounded-3xl"></div>
-        <!-- <div class="absolute inset-0 bg-gradient-to-br from-blue-300 to-blue-500 shadow-lg transform skew-y-0 -rotate-6 rounded-3xl"></div> -->
-        <!-- <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-400 to-blue-400 shadow-lg transform skew-y-0 -rotate-3 rounded-3xl"></div> -->
-        <div
-          class="relative px-4 py-10 bg-gradient-to-r from-fuchsia-400 to-blue-400 shadow-lg rounded-3xl p-20 border-2 border-slate-200 transform skew-y-0 -rotate-6"
-        >
-          <div class="max-w-md mx-auto">
-            <div>
-              <h1 class="text-2xl font-bold text-slate-100 text-center">Login</h1>
+  <section class="w-full h-screen bg-center bg-cover bg-auth-light font-dosis-regular font-semibold text-slate-800 dark:text-slate-100">
+    <div class="w-full h-full bg-gradient-to-tr from-slate-100 dark:from-slate-800 flex justify-center items-center flex-col">
+      <div class="flex justify-center">
+        <div class="relative py-3 w-80 sm:max-w-xl md:max-w-2xl sm:mx-auto">
+          <div
+            class="absolute inset-0 bg-transparent border-dashed border-2 border-slate-800 dark:border-slate-100 transform skew-y-0 -rotate-12 rounded-xl"
+          ></div>
+          <div class="block rounded-xl shadow-2xl bg-slate-100 dark:bg-slate-800 max-w-sm text-center transform skew-y-0 -rotate-6">
+            <div class="py-5 px-6 text-6xl font-satisfy-regular font-black text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 to-blue-400">
+              login
             </div>
-            <div class="divide-y divide-gray-200">
-              <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                <div class="relative my-6">
-                  <input
-                    autocomplete="off"
-                    id="email"
-                    name="email"
-                    type="text"
-                    class="peer placeholder-transparent h-14 w-full border-b-2 border-slate-100 text-gray-900 bg-gradient-to-br from-slate-100 to-slate-300 rounded-t-xl focus:outline-none focus:borer-rose-600 px-2"
-                    placeholder="Email address"
-                  />
-                  <label
-                    for="email"
-                    class="absolute left-0 -top-5 text-slate-800 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-5 transition-all peer-focus:-top-5 peer-focus:text-slate-100 peer-focus:text-sm px-2 rounded-t-xl font-bold"
-                    >Email Address</label
-                  >
-                </div>
-                <div class="relative my-6">
-                  <input
-                    autocomplete="off"
-                    id="password"
-                    name="password"
-                    type="password"
-                    class="peer placeholder-transparent h-14 w-full border-b-2 border-slate-100 text-gray-900 bg-gradient-to-br from-slate-100 to-slate-300 rounded-t-xl focus:outline-none focus:borer-rose-600 px-2"
-                    placeholder="Password"
-                  />
-                  <label
-                    for="password"
-                    class="absolute left-0 -top-2.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-3.5 transition-all peer-focus:-top-5 peer-focus:text-slate-100 peer-focus:text-sm px-2 rounded-t-xl font-bold"
-                    >Password</label
-                  >
-                </div>
+            <div class="p-6">
+              <div class="relative z-0 mb-6 w-full group">
+                <input
+                  type="email"
+                  name="floating_email"
+                  class="block py-2.5 px-3 w-full text-sm bg-transparent border-2 rounded-xl border-slate-400 appearance-none dark:border-slate-500 dark:focus:border-blue-400 focus:outline-none focus:ring-0 focus:border-blue-400 peer"
+                  placeholder=""
+                  required
+                />
+                <label
+                  for="floating_email"
+                  class="absolute text-sm px-1 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-1 origin-[0] left-3 peer-focus:text-blue-400 peer-focus:dark:text-blue-500 bg-slate-100 dark:bg-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >Email / Username</label
+                >
               </div>
             </div>
-            <div class="relative flex justify-center my-6">
-              <button
-                class="px-6 py-3 hover:border-slate-300 border-slate-100 border-2 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-700 hover:to-fuchsia-700 ease bg-gradient-to-br from-blue-600 to-fuchsia-600 w-36"
-              >
-                Login
-              </button>
+            <div class="py-3 px-6 border-t border-slate-400 dark:border-slate-500">
+              <ThemeToggle />
             </div>
           </div>
         </div>
