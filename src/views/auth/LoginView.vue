@@ -2,11 +2,22 @@
 import LoadingScreen from '@/components/LoadingScreen.vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import { login } from '@/services/jotsauce/auth.service';
+import { object, string } from 'zod';
 import { useUserSession } from '@/stores/userSession';
-import { onMounted } from 'vue';
+import { notify } from 'notiwind';
+import { onMounted, ref } from 'vue';
 
 const userSession = useUserSession();
 userSession.clearAuthentication(); // clear authentication if they ever hit this page
+
+const authentication = ref({
+  email_or_username: '',
+  password: '',
+});
+
+// const authenticationSchema = object({
+//   email_or_username: string().min(3).max(255).required(),
+// });
 
 // import { object, string, number } from 'zod';
 
@@ -39,13 +50,41 @@ userSession.clearAuthentication(); // clear authentication if they ever hit this
 // }
 
 onMounted(async () => {
-  await login({ email_or_username: 'hotsaucejakes', password: 'password' });
-  await login({ email_or_username: 'hotsaucejake', password: 'password' });
+  // await login({ email_or_username: 'hotsaucejakes', password: 'password' });
+  // await login({ email_or_username: 'hotsaucejake', password: 'password' });
+  // Error notifcation
+  notify(
+    {
+      group: 'top-right',
+      title: 'Error',
+      text: 'Your email is already used!',
+    },
+    999999
+  );
+
+  notify(
+    {
+      group: 'top-right',
+      title: 'Error',
+      text: 'Your email is already used!',
+    },
+    4000
+  );
+
+  // Generic notification
+  // notify(
+  //   {
+  //     group: 'generic',
+  //     title: 'Info',
+  //     text: 'This channel archived by the owner',
+  //   },
+  //   4000
+  // );
 });
 </script>
 
 <template>
-  <section class="w-full h-screen bg-center bg-cover bg-auth-light font-dosis-regular font-semibold text-slate-800 dark:text-slate-100 text-lg">
+  <section class="w-full h-screen bg-center bg-cover bg-wood-section font-dosis-regular font-semibold text-slate-800 dark:text-slate-100 text-lg">
     <!-- <LoadingScreen /> -->
     <div class="w-full h-full bg-gradient-to-tr from-slate-100 dark:from-slate-800 flex justify-center items-center flex-col">
       <div class="flex justify-center">
@@ -60,6 +99,7 @@ onMounted(async () => {
             <div class="px-6 mt-6">
               <div class="relative z-0 mb-6 w-full group">
                 <input
+                  v-model="authentication.email_or_username"
                   type="email"
                   name="email_or_username"
                   class="block py-2.5 px-3 w-full bg-transparent border-2 rounded-xl border-slate-400 appearance-none dark:border-slate-500 dark:focus:border-blue-400 focus:outline-none focus:ring-0 focus:border-blue-400 peer"
@@ -76,6 +116,7 @@ onMounted(async () => {
             <div class="px-6 mt-3">
               <div class="relative z-0 mb-6 w-full group">
                 <input
+                  v-model="authentication.password"
                   type="password"
                   name="password"
                   class="block py-2.5 px-3 w-full bg-transparent border-2 rounded-xl border-slate-400 appearance-none dark:border-slate-500 dark:focus:border-blue-400 focus:outline-none focus:ring-0 focus:border-blue-400 peer"

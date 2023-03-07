@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LoadingScreen from './components/LoadingScreen.vue';
+import AlertComponent from './components/AlertComponent.vue';
 </script>
 
 <template>
@@ -9,7 +10,10 @@ import LoadingScreen from './components/LoadingScreen.vue';
         <KeepAlive>
           <Suspense>
             <!-- main content -->
-            <component :is="Component"></component>
+            <section>
+              <AlertComponent></AlertComponent>
+              <component :is="Component"> </component>
+            </section>
 
             <!-- loading state -->
             <template #fallback>
