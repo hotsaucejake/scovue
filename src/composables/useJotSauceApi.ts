@@ -1,5 +1,7 @@
+import type { ServiceData } from '@/services/jotsauce/interfaces/service-data.interface';
+import type { ServiceResponse } from '@/services/jotsauce/interfaces/service-response.interface';
 import { useUserSession } from '@/stores/userSession';
-import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
+import axios, { AxiosError, type AxiosInstance, type AxiosResponse } from 'axios';
 
 let api: AxiosInstance;
 
@@ -31,22 +33,82 @@ export function useJotSauceApi() {
   return api;
 }
 
-export async function deleteAsync<T>(endpoint: string): Promise<AxiosResponse> {
-  return await useJotSauceApi().delete<T>(endpoint);
+function createError<T>(error: AxiosError): ServiceResponse<T> {
+  const retError = {
+    type: 'error',
+    code: error.code,
+    message: error.message,
+    status: error.response?.status,
+    statusText: error.response?.statusText,
+    data: error.response?.data,
+  } as ServiceResponse<T>;
+
+  if (retError.status === 401) {
+    // CLEAR AUTHENTICATION HERE
+  } else if (retError.status === 403) {
+    // do something
+  }
+
+  return retError;
 }
 
-export async function getAsync<T>(endpoint: string): Promise<AxiosResponse> {
-  return await useJotSauceApi().get<T>(endpoint);
+function createData<T>(response: AxiosResponse): ServiceData<T> {
+  return {
+    type: 'data',
+    status: response.status,
+    statusText: response.statusText,
+    data: response.data,
+  } as ServiceData<T>;
 }
 
-export async function patchAsync<T>(endpoint: string, body?: {}): Promise<AxiosResponse> {
-  return await useJotSauceApi().patch<T>(endpoint, body);
+export async function postAsync<T>(endpoint: string, body?: {}): Promise<ServiceResponse<T>> {
+  let retResp = {} as ServiceResponse<T>;
+
+  try {
+    const resp = await useJotSauceApi().post<T>(endpoint, body);
+    retResp = createData(resp);
+  } catch (e) {
+    retResp = createError<T>(e as AxiosError<T>);
+  }
+
+  return retResp;
 }
 
-export async function postAsync<T>(endpoint: string, body?: {}): Promise<AxiosResponse> {
-  return await useJotSauceApi().post<T>(endpoint, body);
+export async function getAsync<T>(endpoint: string): Promise<ServiceResponse<T>> {
+  let retResp = {} as ServiceResponse<T>;
+
+  try {
+    const resp = await useJotSauceApi().get<T>(endpoint);
+    retResp = createData(resp);
+  } catch (e) {
+    retResp = createError<T>(e as AxiosError<T>);
+  }
+
+  return retResp;
 }
 
-export async function putAsync<T>(endpoint: string, body?: {}): Promise<AxiosResponse> {
-  return await useJotSauceApi().put<T>(endpoint, body);
+export async function patchAsync<T>(endpoint: string, body?: {}): Promise<ServiceResponse<T>> {
+  let retResp = {} as ServiceResponse<T>;
+
+  try {
+    const resp = await useJotSauceApi().put<T>(endpoint, body);
+    retResp = createData(resp);
+  } catch (e) {
+    retResp = createError<T>(e as AxiosError<T>);
+  }
+
+  return retResp;
+}
+
+export async function deleteAsync<T>(endpoint: string): Promise<ServiceResponse<T>> {
+  let retResp = {} as ServiceResponse<T>;
+
+  try {
+    const resp = await useJotSauceApi().delete<T>(endpoint);
+    retResp = createData(resp);
+  } catch (e) {
+    retResp = createError<T>(e as AxiosError<T>);
+  }
+
+  return retResp;
 }
