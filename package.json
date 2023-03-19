@@ -16,6 +16,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vorms/core": "^1.1.0",
+    "@vorms/resolvers": "^1.1.0",
     "@vueuse/core": "^9.13.0",
     "axios": "^1.3.4",
     "notiwind": "^2.0.0",

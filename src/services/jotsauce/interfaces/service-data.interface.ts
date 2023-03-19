@@ -1,3 +1,4 @@
+import type { ErrorMessage } from './error-message.interface';
 export interface ServiceData<T> {
   type: 'data' | 'error';
   code?: string;
@@ -5,4 +6,6 @@ export interface ServiceData<T> {
   statusText?: string;
   data?: T;
   message?: string;
+  errorMessage?: string;
+  errors?: ErrorMessage[];
 }
