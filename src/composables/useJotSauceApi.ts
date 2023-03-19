@@ -1,4 +1,5 @@
 import type { ErrorMessage } from '@/services/jotsauce/interfaces/error-message.interface';
+import type { ErrorResponse } from '@/services/jotsauce/interfaces/error-response.interface';
 import type { ServiceData } from '@/services/jotsauce/interfaces/service-data.interface';
 import type { ServiceResponse } from '@/services/jotsauce/interfaces/service-response.interface';
 import { useUserSession } from '@/stores/userSession';
@@ -44,20 +45,17 @@ function createError<T>(error: AxiosError): ServiceResponse<T> {
     data: error.response?.data,
   } as ServiceResponse<T>;
 
-  // right now I'm struggling with checking if types/interfaces exist
-  // I'm purely going to code the intended action of what I need retError to be
-  // we should have a conditional that checks if error.response.data.errors exists
-  // if it does, then loop through the array of errors and add it retError.errors
-  // I'll leave the attempts to make everything right commented out below to come back to it later
   if (Object.getOwnPropertyNames(error.response?.data).includes('message')) {
-    retError.errorMessage = error.response?.data.message;
+    retError.errorMessage = (error.response?.data as ErrorResponse<ErrorMessage[]>).message;
   }
 
   retError.errors = [];
 
   if (Object.getOwnPropertyNames(error.response?.data).includes('errors')) {
-    Object.keys(error.response?.data.errors).forEach((key) => {
-      error.response?.data.errors[key].forEach((errorMessage: string) => {
+    Object.keys((error.response?.data as ErrorResponse<ErrorMessage[]>).errors).forEach((key) => {
+      // TODO: remove line below and fix
+      // @ts-ignore
+      (error.response?.data as ErrorResponse<ErrorMessage[]>).errors[key].forEach((errorMessage: string) => {
         retError.errors?.push({
           name: key,
           error: errorMessage,
@@ -65,50 +63,6 @@ function createError<T>(error: AxiosError): ServiceResponse<T> {
       });
     });
   }
-
-  // let errors: any[] = [];
-  // if ('errors' in Object.getOwnPropertyNames(retError.data)) {
-  //   errors = retError.data?.errors;
-  // }
-
-  // Object.keys(errors).forEach((key) => {
-  //   errors[key].forEach((errorMessage: string) => {
-  //     retError.errors?.push({
-  //       name: key,
-  //       error: errorMessage,
-  //     } as unknown as ErrorMessage);
-  //   });
-  // });
-
-  // console.log('errors' in Object.getOwnPropertyNames(retError.data));
-  // Object.values(retError.data);
-  // if ('errors' in Object.proper(retError.data)) {
-  //   console.log(retError.data!.errors);
-  // }
-
-  // retError.errors!.message = (error.response?.data as ErrorResponse<T>).message ?? '';
-  // retError.errors!.errors = (error.response?.data as ErrorResponse<T>).errors;
-
-  // console.log('createError');
-  // console.log(retError);
-  // console.log('createError');
-  // if (retError.errors?.errors) {
-  //   console.log()
-  //   Object.keys(retError.errors.errors).forEach((key) => {
-  //     console.log(key);
-  //   });
-  // }
-  // if ('errors' in (error.response?.data as ErrorResponse)) {
-  //   retError.data = [];
-  //   Object.keys((error.response?.data as ErrorResponse).errors).forEach((key) => {
-  //     error.response?.data.errors[key].forEach((errorMessage: string) => {
-  //       retError.data?.push({
-  //         name: key,
-  //         error: errorMessage,
-  //       } as ErrorResponse);
-  //     });
-  //   });
-  // }
 
   if (retError.status === 401) {
     // CLEAR AUTHENTICATION HERE
