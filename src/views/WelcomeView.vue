@@ -21,6 +21,7 @@ import WelcomeNavigation from '@/components/layouts/navigation/WelcomeNavigation
       </div>
     </section>
     <section class="text-lg max-w-xl mx-auto">
+      <p class="mt-8">JotSauce by Developepper, a hotsaucejake company.</p>
       <p class="mt-8">
         I'm an avid (analog) journaler for organization, productivity, and reflection. You can learn a lot about yourself and personal growth by revisiting
         years' worth of your own logging - you get out of it what you put into it. I log everything from spontaneous to-do lists, various things from my job,
