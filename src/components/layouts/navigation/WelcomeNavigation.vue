@@ -37,10 +37,11 @@ const props = defineProps({
     <div class="mx-auto px-4">
       <div class="flex justify-between">
         <div class="flex">
-          <a href="#" class="flex items-center my-2 mr-9 ml-3">
-            <JotSauceLogo :size="'66'" :should-pulse="false" />
+          <a href="/" class="flex items-center my-2 mr-9 ml-3">
+            <JotSauceLogo :size="'42'" :should-pulse="false" />
           </a>
         </div>
+
         <div class="hidden md:flex items-center">
           <!-- <span class="mx-4">blah</span>
           <span class="mx-4">blah</span>
@@ -48,9 +49,22 @@ const props = defineProps({
         </div>
         <div class="md:flex items-center">
           <ThemeToggle />
+          <a
+            href="/"
+            class="font-satisfy-regular font-black text-center text-4xl pl-7 py-2 leading-10 border-l-2 border-l-slate-300 dark:border-l-slate-600 mx-3"
+            :class="{
+              'text-transparent': true,
+              'bg-clip-text': true,
+              'bg-gradient-to-br': true,
+              'from-fuchsia-400': true,
+              'to-blue-400': true,
+            }"
+          >
+            jotsauce
+          </a>
           <RouterLink :to="{ name: 'register' }">
             <span
-              class="hidden md:inline-flex border-l-2 border-l-slate-300 dark:border-l-slate-600 mr-3 ml-3 px-6 py-3 text-lg text-center justify-center text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 to-blue-400 hover:border-b-fuchsia-400 hover:border-b-4"
+              class="hidden md:inline-flex border-l-2 border-l-slate-300 dark:border-l-slate-600 mx-3 px-6 py-3 text-lg text-center justify-center text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 to-blue-400 hover:border-b-fuchsia-400 hover:border-b-4"
             >
               Register
             </span>
