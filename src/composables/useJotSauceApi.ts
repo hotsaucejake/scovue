@@ -46,18 +46,18 @@ function createError<T>(error: AxiosError): ServiceResponse<T> {
   } as ServiceResponse<T>;
 
   if (Object.getOwnPropertyNames(error.response?.data).includes('message')) {
-    retError.errorMessage = (error.response?.data as ErrorResponse<ErrorMessage[]>).message;
+    retError.errorMessage = (error.response?.data as ErrorResponse<T>).message;
   }
 
   retError.errors = [];
 
   if (Object.getOwnPropertyNames(error.response?.data).includes('errors')) {
-    Object.keys((error.response?.data as ErrorResponse<ErrorMessage[]>).errors).forEach((key) => {
-      // TODO: remove line below and fix
-      // @ts-ignore
-      (error.response?.data as ErrorResponse<ErrorMessage[]>).errors[key].forEach((errorMessage: string) => {
+    const errors = (error.response?.data as ErrorResponse<T>).errors;
+    Object.keys(errors).forEach((value: string) => {
+      const errArray = errors[value as keyof object] as string[];
+      errArray.forEach((errorMessage: string) => {
         retError.errors?.push({
-          name: key,
+          name: value,
           error: errorMessage,
         } as ErrorMessage);
       });
@@ -83,7 +83,7 @@ function createData<T>(response: AxiosResponse): ServiceData<T> {
 }
 
 export async function postAsync<T>(endpoint: string, body?: {}): Promise<ServiceResponse<T>> {
-  let retResp = {} as ServiceResponse<T>;
+  let retResp: ServiceResponse<T>;
 
   try {
     const resp = await useJotSauceApi().post<T>(endpoint, body);
@@ -96,7 +96,7 @@ export async function postAsync<T>(endpoint: string, body?: {}): Promise<Service
 }
 
 export async function getAsync<T>(endpoint: string): Promise<ServiceResponse<T>> {
-  let retResp = {} as ServiceResponse<T>;
+  let retResp: ServiceResponse<T>;
 
   try {
     const resp = await useJotSauceApi().get<T>(endpoint);
@@ -109,7 +109,7 @@ export async function getAsync<T>(endpoint: string): Promise<ServiceResponse<T>>
 }
 
 export async function patchAsync<T>(endpoint: string, body?: {}): Promise<ServiceResponse<T>> {
-  let retResp = {} as ServiceResponse<T>;
+  let retResp: ServiceResponse<T>;
 
   try {
     const resp = await useJotSauceApi().put<T>(endpoint, body);
@@ -122,7 +122,7 @@ export async function patchAsync<T>(endpoint: string, body?: {}): Promise<Servic
 }
 
 export async function deleteAsync<T>(endpoint: string): Promise<ServiceResponse<T>> {
-  let retResp = {} as ServiceResponse<T>;
+  let retResp: ServiceResponse<T>;
 
   try {
     const resp = await useJotSauceApi().delete<T>(endpoint);
