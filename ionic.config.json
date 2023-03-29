@@ -1,0 +1,7 @@
+{
+  "name": "scovue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
