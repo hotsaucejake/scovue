@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { defineCustomElements } from '@ionic/pwa-elements/loader';
+// import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { IonicVue } from '@ionic/vue';
 
 import App from './App.vue';
@@ -24,12 +24,11 @@ import './theme/variables.css';
 
 import './assets/main.css';
 
-const app = createApp(App);
+const pinia = createPinia();
+const app = createApp(App).use(pinia).use(IonicVue).use(router);
 
-app.use(createPinia());
-app.use(IonicVue);
-app.use(router);
+router.isReady().then(() => {
+  app.mount('#app');
+});
 
-app.mount('#app');
-
-defineCustomElements(window);
+// defineCustomElements(window).then(r => );
