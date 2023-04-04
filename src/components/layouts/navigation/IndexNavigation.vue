@@ -1,29 +1,9 @@
 <script setup lang="ts">
 // import JotSauceLogo from '@/components/JotSauceLogo.vue';
 // import ThemeToggle from '@/components/ThemeToggle.vue';
-import { ref } from 'vue';
-
-const showMenu = ref(false);
-const menuItems = [
-  {
-    title: 'Menu 1',
-    subItems: [
-      { title: 'Submenu 1-1', url: '/submenu-1-1' },
-      { title: 'Submenu 1-2', url: '/submenu-1-2' },
-    ],
-  },
-  {
-    title: 'Menu 2',
-    subItems: [
-      { title: 'Submenu 2-1', url: '/submenu-2-1' },
-      { title: 'Submenu 2-2', url: '/submenu-2-2' },
-    ],
-  },
-];
-
-const toggleMenu = () => {
-  showMenu.value = !showMenu.value;
-};
+// import { ref } from 'vue';
+//
+// const showMenu = ref(false);
 </script>
 
 <template>
