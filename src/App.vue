@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import LoadingScreen from './components/LoadingScreen.vue';
-import AlertComponent from './components/AlertComponent.vue';
+import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/vue';
+import { useUserSession } from './stores/userSession';
+import MainMenu from './components/MainMenu.vue';
+
+const session = useUserSession();
 </script>
 
 <template>
@@ -11,8 +15,14 @@ import AlertComponent from './components/AlertComponent.vue';
           <Suspense>
             <!-- main content -->
             <section>
-              <AlertComponent></AlertComponent>
-              <component :is="Component"> </component>
+              <ion-app>
+                <ion-split-pane content-id="main-content">
+                  <MainMenu v-if="session.isAuthenticated" />
+                  <ion-router-outlet id="main-content">
+                    <component :is="Component"> </component>
+                  </ion-router-outlet>
+                </ion-split-pane>
+              </ion-app>
             </section>
 
             <!-- loading state -->

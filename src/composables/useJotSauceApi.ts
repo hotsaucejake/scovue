@@ -35,7 +35,7 @@ export function useJotSauceApi() {
   return api;
 }
 
-function createError<T>(error: AxiosError): ServiceResponse<T> {
+function createError<T extends {}>(error: AxiosError): ServiceResponse<T> {
   const retError = {
     type: 'error',
     code: error.code,

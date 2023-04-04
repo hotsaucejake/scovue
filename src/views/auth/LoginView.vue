@@ -3,7 +3,6 @@ import LoadingScreen from '@/components/LoadingScreen.vue';
 import ThemeToggle from '@/components/ThemeToggle.vue';
 import { login } from '@/services/jotsauce/auth.service';
 import { useUserSession } from '@/stores/userSession';
-import { notify } from 'notiwind';
 import { ref } from 'vue';
 import type { AuthenticationResponseInterface } from '@/services/jotsauce/interfaces/auth/authentication-response.interface';
 import { useRouter, useRoute } from 'vue-router';
@@ -45,16 +44,16 @@ const { register, errors, handleSubmit } = useForm({
             await router.push({ path: '/index' });
           }
         } else if ((await response).type === 'error' && (await response).errors) {
-          (await response).errors?.forEach((error) => {
-            notify(
-              {
-                group: 'top-right',
-                title: error.name,
-                text: error.error,
-              },
-              6000
-            );
-          });
+          // (await response).errors?.forEach((error) => {
+          //   notify(
+          //     {
+          //       group: 'top-right',
+          //       title: error.name,
+          //       text: error.error,
+          //     },
+          //     6000
+          //   );
+          // });
         } else {
           console.log(await response);
         }

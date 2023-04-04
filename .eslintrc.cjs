@@ -13,4 +13,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
+  ignorePatterns: ['android/*', 'ios/*'],
+  rules: {
+    'vue/no-deprecated-slot-attribute': 'off',
+  },
 };

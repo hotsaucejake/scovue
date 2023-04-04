@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from '@ionic/vue-router';
 import Welcome from '@/views/WelcomeView.vue';
 import { useUserSession } from '@/stores/userSession';
 
@@ -37,6 +37,11 @@ const router = createRouter({
       path: '/index',
       name: 'index',
       component: () => import('../views/IndexView.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/folder/:id',
+      component: () => import('@/views/FolderPage.vue'),
       meta: { requiresAuth: true },
     },
   ],

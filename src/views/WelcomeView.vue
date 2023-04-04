@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import WelcomeNavigation from '@/components/layouts/navigation/WelcomeNavigation.vue';
+// import LandingNavigation from '@/components/layouts/navigation/LandingNavigation.vue';
 import FeaturesPartial from './partials/FeaturesPartial.vue';
 import BrainstormPartial from './partials/BrainstormPartial.vue';
 </script>
@@ -22,6 +23,8 @@ import BrainstormPartial from './partials/BrainstormPartial.vue';
         </div>
       </div>
     </section>
+
+    <!-- <LandingNavigation /> -->
 
     <FeaturesPartial />
 
