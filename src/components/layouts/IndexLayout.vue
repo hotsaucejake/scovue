@@ -3,8 +3,8 @@ import IndexNavigation from './navigation/IndexNavigation.vue';
 </script>
 
 <template>
-  <div>
+  <section>
     <IndexNavigation />
     <slot></slot>
-  </div>
+  </section>
 </template>

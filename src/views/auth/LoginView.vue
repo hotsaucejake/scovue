@@ -85,7 +85,9 @@ const { value: remember, attrs: rememberAttrs } = register('remember');
 <template>
   <section class="w-full h-screen bg-center bg-cover bg-wood-section font-dosis-regular font-semibold text-slate-800 dark:text-slate-100 text-lg">
     <LoadingScreen v-if="isLoading"></LoadingScreen>
+
     <div class="w-full h-full bg-gradient-to-tr from-slate-100 dark:from-slate-800 flex justify-center items-center flex-col">
+
       <div class="flex justify-center">
         <div class="relative py-3 w-80 sm:max-w-xl md:max-w-2xl sm:mx-auto">
           <div
