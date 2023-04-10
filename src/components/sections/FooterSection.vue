@@ -1,5 +1,5 @@
 <template>
-  <footer class="p-4 bg-white md:p-8 lg:p-10 dark:bg-black">
+  <footer class="p-4 bg-slate-100 md:p-8 lg:p-10 dark:bg-slate-800">
     <div class="mx-auto max-w-screen-xl text-center">
       <a href="/" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
         <JotSauceLogo :size="'42'" :should-pulse="false" />

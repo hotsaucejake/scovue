@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import WelcomeNavigation from '@/components/layouts/navigation/WelcomeNavigation.vue';
-import FeaturesPartial from './partials/FeaturesPartial.vue';
+import FeaturesPartial from '../components/sections/FeaturesOne.vue';
 // import BrainstormPartial from './partials/BrainstormPartial.vue';
 import CtaOne from '@/components/sections/CtaOne.vue';
 import FooterSection from '@/components/sections/FooterSection.vue';
+import FeaturesTwo from '@/components/sections/FeaturesTwo.vue';
 </script>
 
 <template>
@@ -30,6 +31,8 @@ import FooterSection from '@/components/sections/FooterSection.vue';
     <WelcomeNavigation :is-sticky="true" :is-transparent="false" />
 
     <CtaOne />
+
+    <features-two />
 
     <footer-section />
 
