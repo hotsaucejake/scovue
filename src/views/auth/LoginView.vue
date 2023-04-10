@@ -10,6 +10,8 @@ import { useRouter, useRoute } from 'vue-router';
 import { useForm } from '@vorms/core';
 import z from 'zod';
 import { zodResolver } from '@vorms/resolvers/zod';
+import WelcomeNavigation from '@/components/layouts/navigation/WelcomeNavigation.vue';
+import FooterSection from '@/components/sections/FooterSection.vue';
 
 const isLoading = ref(false);
 const router = useRouter();
@@ -86,8 +88,9 @@ const { value: remember, attrs: rememberAttrs } = register('remember');
   <section class="w-full h-screen bg-center bg-cover bg-wood-section font-dosis-regular font-semibold text-slate-800 dark:text-slate-100 text-lg">
     <LoadingScreen v-if="isLoading"></LoadingScreen>
 
-    <div class="w-full h-full bg-gradient-to-tr from-slate-100 dark:from-slate-800 flex justify-center items-center flex-col">
+    <welcome-navigation />
 
+    <div class="w-full h-full bg-gradient-to-tr from-slate-100 dark:from-slate-800 flex justify-center items-center flex-col">
       <div class="flex justify-center">
         <div class="relative py-3 w-80 sm:max-w-xl md:max-w-2xl sm:mx-auto">
           <div
@@ -113,7 +116,9 @@ const { value: remember, attrs: rememberAttrs } = register('remember');
                     class="absolute px-1 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 z-1 origin-[0] left-3 peer-focus:text-blue-400 peer-focus:dark:text-blue-500 bg-slate-100 dark:bg-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >email / username</label
                   >
-                  <div v-show="'email_or_username' in errors" class="text-red-500 text-sm text-left w-full mt-1">{{ errors.email_or_username }}</div>
+                  <div v-show="'email_or_username' in errors" class="text-red-500 text-sm text-left w-full mt-1">
+                    {{ errors.email_or_username }}
+                  </div>
                 </div>
               </div>
               <div class="px-6 mt-3">
@@ -131,7 +136,9 @@ const { value: remember, attrs: rememberAttrs } = register('remember');
                     class="absolute px-1 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-2 z-1 origin-[0] left-3 peer-focus:text-blue-400 peer-focus:dark:text-blue-500 bg-slate-100 dark:bg-slate-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >password</label
                   >
-                  <div v-show="'password' in errors" class="text-red-500 text-sm text-left w-full mt-1">{{ errors.password }}</div>
+                  <div v-show="'password' in errors" class="text-red-500 text-sm text-left w-full mt-1">
+                    {{ errors.password }}
+                  </div>
                 </div>
               </div>
               <div class="px-6 mt-3">
@@ -159,5 +166,7 @@ const { value: remember, attrs: rememberAttrs } = register('remember');
         </div>
       </div>
     </div>
+
+    <footer-section />
   </section>
 </template>
