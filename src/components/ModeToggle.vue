@@ -1,7 +1,6 @@
 <template>
   <button
     @click="toggleDark()"
-    data-tooltip-target="tooltip-dark"
     type="button"
     class="inline-flex items-center p-2 mr-1 text-sm font-medium text-slate-500 rounded-lg dark:text-slate-400 hover:bg-slate-200 focus:ring-4 focus:ring-slate-300 dark:hover:bg-slate-600 focus:outline-none dark:focus:ring-slate-700"
   >

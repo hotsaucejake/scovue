@@ -1,10 +1,40 @@
 <script setup lang="ts">
-import ThemeToggle from '@/components/ThemeToggle.vue';
+import LoadingScreen from '@/App.vue';
+import WelcomeNavigation from '@/components/layouts/navigation/WelcomeNavigation.vue';
+import FooterSection from '@/components/sections/FooterSection.vue';
+import { onMounted, ref } from 'vue';
+import InvitationRequestModal from '@/components/modals/InvitationRequestModal.vue';
+import { getSettings } from '@/services/jotsauce/settings.service';
+import type { SettingsInterface } from '@/services/jotsauce/interfaces/settings/settings.interface';
+
+const isLoading = ref(false);
+const isInviteOnly = ref(true);
+
+onMounted(async () => {
+  isLoading.value = true;
+
+  try {
+    const settings = getSettings();
+
+    if ((await settings).type === 'data' && ((await settings).data as SettingsInterface).invitations) {
+      isInviteOnly.value = ((await settings).data as SettingsInterface).invitations.invite_only;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+  isLoading.value = false;
+});
 </script>
 
 <template>
   <section class="w-full h-screen bg-center bg-cover bg-chemex-image font-dosis-regular font-semibold text-slate-800 dark:text-slate-100">
-    <div class="w-full h-full bg-gradient-to-tr from-slate-100 dark:from-slate-800 flex justify-center items-center flex-col">
+    <LoadingScreen v-if="isLoading"></LoadingScreen>
+
+    <invitation-request-modal v-if="isInviteOnly" />
+
+    <welcome-navigation />
+
+    <div v-if="isInviteOnly" class="w-full h-full bg-gradient-to-tr from-slate-100 dark:from-slate-800 flex justify-center items-center flex-col">
       <div class="flex justify-center">
         <div class="relative py-3 sm:max-w-xl md:max-w-2xl sm:mx-auto">
           <div
@@ -21,11 +51,19 @@ import ThemeToggle from '@/components/ThemeToggle.vue';
               <p class="mb-4 font-bold text-lg">JotSauce registration is currently limited to invitations given out by existing members.</p>
             </div>
             <div class="py-3 px-6 border-t border-slate-400 dark:border-slate-500">
-              <ThemeToggle />
+              <button
+                type="button"
+                data-modal-toggle="invitationRequestModal"
+                class="inline-flex mx-3 px-6 py-3 text-center justify-center font-bold text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-blue-400 to-fuchsia-400"
+              >
+                Request Invite
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <footer-section />
   </section>
 </template>

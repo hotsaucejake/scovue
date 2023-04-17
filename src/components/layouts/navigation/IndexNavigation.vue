@@ -1,11 +1,6 @@
 <script setup lang="ts">
-// import JotSauceLogo from '@/components/JotSauceLogo.vue';
-// import ThemeToggle from '@/components/ThemeToggle.vue';
-// import { ref } from 'vue';
-//
-// const showMenu = ref(false);
 import { onMounted } from 'vue';
-import { initCollapses, initDropdowns, initFlowbite } from 'flowbite';
+import { initCollapses, initDropdowns } from 'flowbite';
 import JotSauceLogo from '@/components/JotSauceLogo.vue';
 import ModeToggle from '@/components/ModeToggle.vue';
 import ProfileDropdown from '@/components/layouts/navigation/ProfileDropdown.vue';

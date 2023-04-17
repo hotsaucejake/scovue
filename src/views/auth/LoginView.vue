@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import LoadingScreen from '@/components/LoadingScreen.vue';
-import ThemeToggle from '@/components/ThemeToggle.vue';
 import { login } from '@/services/jotsauce/auth.service';
 import { useUserSession } from '@/stores/userSession';
 import { notify } from 'notiwind';
@@ -150,7 +149,7 @@ const { value: remember, attrs: rememberAttrs } = register('remember');
                   <span class="ml-3 text-gray-900 dark:text-gray-300">trust this device?</span>
                 </label>
               </div>
-              <div class="px-6 mt-3 mb-6">
+              <div class="px-6 mt-3 mb-6 pb-6">
                 <button
                   type="submit"
                   class="inline-flex mx-3 px-6 py-3 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-blue-400 to-fuchsia-400 w-36"
@@ -159,9 +158,6 @@ const { value: remember, attrs: rememberAttrs } = register('remember');
                 </button>
               </div>
             </form>
-            <div class="py-3 px-6 border-t border-slate-400 dark:border-slate-500">
-              <ThemeToggle />
-            </div>
           </div>
         </div>
       </div>
