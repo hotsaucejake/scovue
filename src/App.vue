@@ -1,6 +1,26 @@
 <script setup lang="ts">
 import LoadingScreen from './components/LoadingScreen.vue';
 import AlertComponent from './components/AlertComponent.vue';
+import { useJotsauceSettings } from '@/stores/jotsauceSettings';
+import { getSettings } from '@/services/jotsauce/settings.service';
+import type { SettingsInterface } from '@/services/jotsauce/interfaces/settings/settings.interface';
+import { onMounted } from 'vue';
+
+const jotsauceSettings = useJotsauceSettings();
+
+onMounted(async () => {
+  if (!jotsauceSettings.settings) {
+    try {
+      const response = getSettings();
+
+      if ((await response).type === 'data' && ((await response).data as SettingsInterface)) {
+        jotsauceSettings.setSettings((await response).data as SettingsInterface);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+});
 </script>
 
 <template>
@@ -12,7 +32,7 @@ import AlertComponent from './components/AlertComponent.vue';
             <!-- main content -->
             <section>
               <AlertComponent></AlertComponent>
-              <component :is="Component"> </component>
+              <component :is="Component"></component>
             </section>
 
             <!-- loading state -->
