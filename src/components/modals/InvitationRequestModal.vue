@@ -35,22 +35,29 @@
               <label for="email" class="block mb-2 text-sm font-medium text-slate-800 dark:text-slate-100">Email</label>
               <input
                 type="email"
-                name="email"
-                id="email"
+                v-model="email"
+                v-bind="emailAttrs"
                 class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-black dark:border-slate-600 placeholder-slate-400 dark:placeholder-slate-500 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="example@email.com"
-                :required="true"
+                required
               />
+              <div v-show="'email' in errors" class="text-red-500 text-sm text-left w-full mt-1">
+                {{ errors.email }}
+              </div>
             </div>
 
             <div>
-              <label for="description" class="block mb-2 text-sm font-medium text-slate-800 dark:text-slate-100">Description (optional)</label>
+              <label for="message" class="block mb-2 text-sm font-medium text-slate-800 dark:text-slate-100">Message (optional)</label>
               <textarea
-                id="description"
+                v-model="message"
+                v-bind="messageAttrs"
                 rows="4"
                 class="block p-2.5 w-full text-sm text-slate-800 bg-white rounded-lg border border-slate-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-black dark:border-slate-600 placeholder-slate-400 dark:placeholder-slate-500 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Let us know why you want to be invited..."
               ></textarea>
+              <div v-show="'message' in errors" class="text-red-500 text-sm text-left w-full mt-1">
+                {{ errors.message }}
+              </div>
             </div>
           </div>
           <button
@@ -66,8 +73,40 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { initModals } from 'flowbite';
+import { useForm } from '@vorms/core';
+import { zodResolver } from '@vorms/resolvers/zod';
+import z from 'zod';
+
+const isLoading = ref(false);
+
+const { register, errors, handleSubmit } = useForm({
+  initialValues: {
+    email: '',
+    message: null,
+  },
+  validate: zodResolver(
+    z.object({
+      email: z.string().email().max(255, 'Maximum of 255 Characters!'),
+      message: z.string().max(1024, 'Maximum of 1024 Characters!').nullable(),
+    })
+  ),
+  async onSubmit(values) {
+    if (!isLoading.value) {
+      // handle submit here
+      // same as in the LoginView
+    }
+  },
+});
+
+const { value: email, attrs: emailAttrs } = register('email', {
+  validate(value) {
+    if (!value) return 'Email is Required!';
+  },
+});
+
+const { value: message, attrs: messageAttrs } = register('message');
 
 onMounted(() => {
   initModals();

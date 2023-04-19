@@ -4,26 +4,14 @@ import WelcomeNavigation from '@/components/layouts/navigation/WelcomeNavigation
 import FooterSection from '@/components/sections/FooterSection.vue';
 import { onMounted, ref } from 'vue';
 import InvitationRequestModal from '@/components/modals/InvitationRequestModal.vue';
-import { getSettings } from '@/services/jotsauce/settings.service';
-import type { SettingsInterface } from '@/services/jotsauce/interfaces/settings/settings.interface';
+import { useJotsauceSettings } from '@/stores/jotsauceSettings';
+
+const jotsauceSettings = useJotsauceSettings();
 
 const isLoading = ref(false);
-const isInviteOnly = ref(true);
+const isInviteOnly = ref(jotsauceSettings.settings?.invitations?.invite_only === undefined ? true : jotsauceSettings.settings.invitations.invite_only);
 
-onMounted(async () => {
-  isLoading.value = true;
-
-  try {
-    const settings = getSettings();
-
-    if ((await settings).type === 'data' && ((await settings).data as SettingsInterface).invitations) {
-      isInviteOnly.value = ((await settings).data as SettingsInterface).invitations.invite_only;
-    }
-  } catch (e) {
-    console.log(e);
-  }
-  isLoading.value = false;
-});
+onMounted(async () => {});
 </script>
 
 <template>
