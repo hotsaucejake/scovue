@@ -7,7 +7,7 @@
   >
     <div class="relative sm:p-4 w-full max-w-2xl h-full md:h-auto">
       <!-- Modal content -->
-      <div class="relative p-4 bg-slate-100 rounded-lg shadow dark:bg-slate-800">
+      <div v-if="!success" class="relative p-4 bg-slate-100 rounded-lg shadow dark:bg-slate-800">
         <!-- Modal header -->
         <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b border-slate-300 sm:mb-5 dark:border-slate-600">
           <h3 class="text-2xl sm:text-4xl font-satisfy-regular font-black text-transparent bg-clip-text bg-gradient-to-br from-fuchsia-400 to-blue-400">
@@ -39,6 +39,7 @@
                 v-bind="emailAttrs"
                 class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-black dark:border-slate-600 placeholder-slate-400 dark:placeholder-slate-500 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="example@email.com"
+                :disabled="isLoading"
                 required
               />
               <div v-show="'email' in errors" class="text-red-500 text-sm text-left w-full mt-1">
@@ -54,19 +55,63 @@
                 rows="4"
                 class="block p-2.5 w-full text-sm text-slate-800 bg-white rounded-lg border border-slate-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-black dark:border-slate-600 placeholder-slate-400 dark:placeholder-slate-500 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Let us know why you want to be invited..."
+                :disabled="isLoading"
               ></textarea>
               <div v-show="'message' in errors" class="text-red-500 text-sm text-left w-full mt-1">
                 {{ errors.message }}
               </div>
             </div>
           </div>
-          <button
-            type="submit"
-            class="inline-flex mx-3 px-6 py-3 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-blue-400 to-fuchsia-400 w-36"
-          >
-            Request
-          </button>
+          <div class="flex justify-center">
+            <div>
+              <button
+                type="submit"
+                class="inline-flex px-6 py-3 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-blue-400 to-fuchsia-400 w-36"
+                :disabled="isLoading"
+              >
+                Request
+              </button>
+            </div>
+          </div>
         </form>
+      </div>
+
+      <div v-if="success" class="relative p-4 bg-slate-100 rounded-lg shadow dark:bg-slate-800">
+        <!-- Modal header -->
+        <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b border-slate-300 sm:mb-5 dark:border-slate-600">
+          <h3 class="text-2xl sm:text-4xl font-satisfy-regular font-black text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
+            success!
+          </h3>
+          <button
+            type="button"
+            class="text-slate-800 bg-transparent hover:bg-slate-300 hover:text-slate-700 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-slate-200"
+            data-modal-toggle="invitationRequestModal"
+          >
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="sr-only">Close Invitation Request</span>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="grid gap-4 mb-6 grid-cols-1">
+          <div class="text-xl">Your request for invite was received. Be on the lookout for an invitation if chosen.</div>
+        </div>
+        <div class="flex justify-center">
+          <div>
+            <button
+              type="button"
+              class="inline-flex px-6 py-3 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-green-400 to-green-600 w-36"
+              data-modal-hide="invitationRequestModal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -80,6 +125,7 @@ import { zodResolver } from '@vorms/resolvers/zod';
 import z from 'zod';
 
 const isLoading = ref(false);
+const success = ref(true);
 
 const { register, errors, handleSubmit } = useForm({
   initialValues: {
