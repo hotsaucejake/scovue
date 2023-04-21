@@ -29,7 +29,7 @@
           </button>
         </div>
         <!-- Modal body -->
-        <form action="#">
+        <form @submit="handleSubmit">
           <div class="grid gap-4 mb-4 grid-cols-1">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-slate-800 dark:text-slate-100">Email</label>
@@ -82,35 +82,10 @@
           <h3 class="text-2xl sm:text-4xl font-satisfy-regular font-black text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
             success!
           </h3>
-          <button
-            type="button"
-            class="text-slate-800 bg-transparent hover:bg-slate-300 hover:text-slate-700 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-slate-200"
-            data-modal-toggle="invitationRequestModal"
-          >
-            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <span class="sr-only">Close Invitation Request</span>
-          </button>
         </div>
         <!-- Modal body -->
         <div class="grid gap-4 mb-6 grid-cols-1">
           <div class="text-xl">Your request for invite was received. Be on the lookout for an invitation if chosen.</div>
-        </div>
-        <div class="flex justify-center">
-          <div>
-            <button
-              type="button"
-              class="inline-flex px-6 py-3 text-center justify-center text-lg text-slate-100 transition duration-300 rounded-full hover:from-blue-600 hover:to-fuchsia-600 ease bg-gradient-to-br from-green-400 to-green-600 w-36"
-              data-modal-hide="invitationRequestModal"
-            >
-              Close
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -123,14 +98,17 @@ import { initModals } from 'flowbite';
 import { useForm } from '@vorms/core';
 import { zodResolver } from '@vorms/resolvers/zod';
 import z from 'zod';
+import { storeInvitationRequest } from '@/services/jotsauce/invitation-requests.service';
+import type { InvitationRequestResponse } from '@/services/jotsauce/interfaces/invitation-requests/invitation-request.response';
+import { notify } from 'notiwind';
 
 const isLoading = ref(false);
-const success = ref(true);
+const success = ref(false);
 
 const { register, errors, handleSubmit } = useForm({
   initialValues: {
     email: '',
-    message: null,
+    message: '',
   },
   validate: zodResolver(
     z.object({
@@ -140,8 +118,31 @@ const { register, errors, handleSubmit } = useForm({
   ),
   async onSubmit(values) {
     if (!isLoading.value) {
-      // handle submit here
-      // same as in the LoginView
+      isLoading.value = true;
+      try {
+        const response = storeInvitationRequest(values);
+
+        if ((await response).type === 'data' && ((await response).data as InvitationRequestResponse)) {
+          success.value = true;
+        } else if ((await response).type === 'error' && (await response).errors) {
+          (await response).errors?.forEach((error) => {
+            notify(
+              {
+                group: 'top-right',
+                title: error.name,
+                text: error.error,
+              },
+              6000
+            );
+          });
+        } else {
+          console.log(await response);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+
+      isLoading.value = false;
     }
   },
 });

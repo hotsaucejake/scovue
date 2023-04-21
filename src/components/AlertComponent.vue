@@ -3,7 +3,7 @@
 <template>
   <section>
     <NotificationGroup group="top-right">
-      <div class="fixed inset-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none">
+      <div class="fixed inset-0 flex items-start justify-end p-6 px-4 py-6 pointer-events-none" style="z-index: 99">
         <div class="w-full max-w-sm">
           <Notification
             v-slot="{ notifications, close }"
