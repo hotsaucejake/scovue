@@ -18,8 +18,6 @@ onMounted(async () => {});
   <section class="w-full h-screen bg-center bg-cover bg-chemex-image font-dosis-regular font-semibold text-slate-800 dark:text-slate-100">
     <LoadingScreen v-if="isLoading"></LoadingScreen>
 
-    <invitation-request-modal v-if="isInviteOnly" />
-
     <welcome-navigation />
 
     <div v-if="isInviteOnly" class="w-full h-full bg-gradient-to-tr from-slate-100 dark:from-slate-800 flex justify-center items-center flex-col">
@@ -51,6 +49,8 @@ onMounted(async () => {});
         </div>
       </div>
     </div>
+
+    <invitation-request-modal v-if="isInviteOnly" />
 
     <footer-section />
   </section>
